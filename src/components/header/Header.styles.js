@@ -3,8 +3,13 @@ import styled from 'styled-components';
 export const HeaderWrapper = styled.header`
   display: flex;
   position: sticky;
+  top: 0;
   justify-content: space-between;
-  padding: 1rem;
+  align-items: center;
+  padding: 1rem 5rem;
+
+  background-color: #cba5fa;
+  color: #fff;
 `;
 
 export const NavBar = styled.nav``;
