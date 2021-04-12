@@ -6,6 +6,7 @@ export const SearchResultsWrapper = styled.section`
   padding: 1.5rem 3rem;
   background-color: #7b57ae;
   color: #eaeaff;
+  border-radius: 3px;
 `;
 
 export const SearchResultsHeader = styled.header`

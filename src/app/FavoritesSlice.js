@@ -1,15 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  favorites: [
-    {
-      location: { id: 215854, name: 'Tel Aviv' },
-      currentWeather: {
-        temperature: 15.5,
-        weatherText: 'Partly cloudy',
-      },
-    },
-  ],
+  favorites: [],
 };
 
 export const favoritesSlice = createSlice({
@@ -20,12 +12,15 @@ export const favoritesSlice = createSlice({
       state.favorites = action.payload;
     },
     addFavorite: (state, action) => {
-      state.favorites.unshift(action.payload);
-      state.favorites = Array.reduce((acc, item) => {
-        if (!acc.includes(item.location.id)) acc.push(item);
+      console.log(state);
+      if (
+        state.favorites.find(
+          (item) => item.location.id === action.payload.location.id,
+        )
+      )
+        return;
 
-        return acc;
-      }, state.favorites);
+      state.favorites.unshift(action.payload);
     },
     deleteFavorite: (state, action) => {
       state.favorites = state.favorites.filter(
@@ -65,6 +60,7 @@ export const {
   addFavorite,
   deleteFavorite,
   updateFavorites,
+  isFavorite,
 } = favoritesSlice.actions;
 
 export const selectFavorites = (state) => {

@@ -14,6 +14,8 @@ export const Card = styled.li`
   background-color: #7b57ae;
   color: #eaeaff;
   text-align: center;
+  margin-bottom: 1rem;
+  min-width: calc(20% - 4rem);
 `;
 
 export const Title = styled.h2``;

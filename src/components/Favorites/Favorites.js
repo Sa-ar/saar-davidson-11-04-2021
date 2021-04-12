@@ -8,7 +8,6 @@ import { Container } from '../../shared.styles';
 function Favorites() {
   const favorites = useSelector(selectFavorites);
 
-  console.log(favorites);
   return (
     <Container>
       <PageTitle>

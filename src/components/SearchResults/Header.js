@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  selectCurrentWeather,
-  selectCurrentLocation,
-} from '../../app/WeatherSlice';
+import { selectWeather } from '../../app/WeatherSlice';
 import { Button } from '../../shared.styles';
 import {
   SearchResultsHeader,
   SelectedResult,
   SelectedResultCard,
 } from './SearchResults.styles';
+import { useDispatch } from 'react-redux';
+import {
+  addFavorite,
+  deleteFavorite,
+  selectFavorites,
+} from '../../app/FavoritesSlice';
 
 function Header() {
-  const currentWeather = useSelector(selectCurrentWeather);
-  const currentLocation = useSelector(selectCurrentLocation);
+  const dispatch = useDispatch();
+  const weather = useSelector(selectWeather);
+  const favorites = useSelector(selectFavorites);
+  const [isInFavorite, setIsInFavorite] = useState(
+    favorites.find((item) => item.location.id === weather.location.id),
+  );
 
   return (
     <SearchResultsHeader>
@@ -25,13 +32,31 @@ function Header() {
             style={{ marginRight: '3rem' }}
           />
           <div>
-            <h3>{currentLocation.name}</h3>
-            <span>{currentWeather?.temperature}'C</span>
+            <h3>{weather.location.name}</h3>
+            <span>{weather.currentWeather?.temperature}'C</span>
           </div>
         </SelectedResultCard>
-        <h1>{currentWeather?.weatherText}</h1>
+        <h1>{weather.currentWeather?.weatherText}</h1>
         <div>
-          <Button>Add to Favorites</Button>
+          {isInFavorite ? (
+            <Button
+              onClick={() => {
+                setIsInFavorite(false);
+                dispatch(deleteFavorite(weather));
+              }}
+            >
+              Remove from Favorites
+            </Button>
+          ) : (
+            <Button
+              onClick={() => {
+                setIsInFavorite(true);
+                dispatch(addFavorite(weather));
+              }}
+            >
+              Add to Favorites
+            </Button>
+          )}
         </div>
       </SelectedResult>
     </SearchResultsHeader>

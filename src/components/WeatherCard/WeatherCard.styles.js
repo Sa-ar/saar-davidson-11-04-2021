@@ -4,6 +4,8 @@ export const Wrapper = styled.li`
   background-color: #673a9f;
   text-align: center;
   padding: 1rem;
+  min-width: calc(20% - 4rem);
+  border-radius: 3px;
 `;
 
 export const Title = styled.h3`

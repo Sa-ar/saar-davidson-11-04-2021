@@ -21,7 +21,6 @@ function Search() {
   const dispatch = useDispatch();
 
   async function changeHandler() {
-    console.log(searchInput.current.value);
     const result = await fetchSuggestions(searchInput.current.value);
     setSuggestions(result);
   }
@@ -31,10 +30,13 @@ function Search() {
 
     const newLocation = {
       id: suggestions.filter(
-        (city) => city.LocalizedName === e.target[0].value,
-      )[0].Key,
+        (city) =>
+          city.LocalizedName.toLowerCase() === e.target[0].value.toLowerCase(),
+      )[0]?.Key,
       name: e.target[0].value,
     };
+
+    if (newLocation.id == null) return setSuggestions([]);
 
     const next5Days = await fetchNext5DaysWeather(newLocation.id);
     const currentWeather = await fetchCurrentWeather(newLocation.id);
