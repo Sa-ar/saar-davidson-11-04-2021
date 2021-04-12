@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { selectCurrentWeather } from '../../app/WeatherSlice';
+import { Button } from '../../shared.styles';
 import {
   SearchResultsHeader,
   SelectedResult,
@@ -21,8 +22,7 @@ function Header() {
           </div>
         </SelectedResultCard>
         <div>
-          <button>Like</button>
-          <button>Add to Favorites</button>
+          <Button>Add to Favorites</Button>
         </div>
       </SelectedResult>
 
