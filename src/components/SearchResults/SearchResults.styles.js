@@ -23,10 +23,13 @@ export const SelectedResultCard = styled.div`
   justify-content: space-between;
 `;
 
-export const Next5DaysSection = styled.footer``;
+export const Next5DaysSection = styled.footer`
+  margin-top: 2rem;
+`;
 
 export const Next5DaysList = styled.ol`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0;
   list-style-type: none;
 `;

@@ -39,10 +39,11 @@ function Search() {
     const next5Days = await fetchNext5DaysWeather(newLocation.id);
     const currentWeather = await fetchCurrentWeather(newLocation.id);
 
-    console.log(next5Days);
     dispatch(changeLocation(newLocation));
     dispatch(changeNext5Days(next5Days));
     dispatch(changeCurrentWeather(currentWeather));
+
+    setSuggestions([]);
   }
 
   return (
@@ -52,7 +53,7 @@ function Search() {
           type='text'
           placeholder='City'
           ref={searchInput}
-          onChange={_.debounce(changeHandler, 200)}
+          onChange={_.debounce(changeHandler, 1000)}
         />
         <Button>Check weather</Button>
         {!!suggestions && (

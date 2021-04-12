@@ -1,15 +1,20 @@
 import styled from 'styled-components';
+import { Container as HeaderContainer } from '../../shared.styles';
 
 export const HeaderWrapper = styled.header`
-  display: flex;
   position: sticky;
   top: 0;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 5rem;
+  padding: 0;
 
   background-color: #cba5fa;
   color: #fff;
+`;
+
+export const Container = styled(HeaderContainer)`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
 `;
 
 export const NavBar = styled.nav``;

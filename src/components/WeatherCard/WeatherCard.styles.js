@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.li`
   background-color: #673a9f;
-  width: 15%;
   text-align: center;
   padding: 1rem;
 `;

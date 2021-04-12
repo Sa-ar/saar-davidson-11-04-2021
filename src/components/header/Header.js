@@ -1,16 +1,29 @@
 import React from 'react';
-import { HeaderWrapper, NavBar, NavList, NavItem } from './Header.styles';
+import { Link } from 'react-router-dom';
+import {
+  HeaderWrapper,
+  NavBar,
+  NavList,
+  NavItem,
+  Container,
+} from './Header.styles';
 
 function Header() {
   return (
     <HeaderWrapper>
-      <h2>Herolo Weather Task</h2>
-      <NavBar>
-        <NavList>
-          <NavItem>Home</NavItem>
-          <NavItem>Favorites</NavItem>
-        </NavList>
-      </NavBar>
+      <Container>
+        <h2>Herolo Weather Task</h2>
+        <NavBar>
+          <NavList>
+            <NavItem>
+              <Link to='/'>Home</Link>
+            </NavItem>
+            <NavItem>
+              <Link to='/favorites'>Favorites</Link>
+            </NavItem>
+          </NavList>
+        </NavBar>
+      </Container>
     </HeaderWrapper>
   );
 }
