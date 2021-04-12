@@ -7,7 +7,6 @@ function SearchResults() {
   return (
     <SearchResultsWrapper>
       <Header />
-      <h1>Scattered clouds</h1>
       <Next5Days />
     </SearchResultsWrapper>
   );

@@ -1,20 +1,32 @@
 import React from 'react';
-import { SearchResultsHeader } from './SearchResults.styles';
+import { useSelector } from 'react-redux';
+import { selectCurrentWeather } from '../../app/WeatherSlice';
+import {
+  SearchResultsHeader,
+  SelectedResult,
+  SelectedResultCard,
+} from './SearchResults.styles';
 
 function Header() {
+  const currentWeather = useSelector(selectCurrentWeather);
+
   return (
     <SearchResultsHeader>
-      <div>
-        <img src='' alt='' />
+      <SelectedResult>
+        <SelectedResultCard>
+          <img src='' alt='' />
+          <div>
+            <h3>Tel Aviv</h3>
+            <span>{currentWeather?.temperature}'C</span>
+          </div>
+        </SelectedResultCard>
         <div>
-          <h3>Tel Aviv</h3>
-          <span>38'C</span>
+          <button>Like</button>
+          <button>Add to Favorites</button>
         </div>
-      </div>
-      <div>
-        <button>Like</button>
-        <button>Add to Favorites</button>
-      </div>
+      </SelectedResult>
+
+      <h1>{currentWeather?.weatherText}</h1>
     </SearchResultsHeader>
   );
 }

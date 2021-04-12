@@ -5,7 +5,9 @@ function WeatherCard({ day, temperature }) {
   return (
     <Wrapper>
       <Title>{day}</Title>
-      <span>{temperature}'C</span>
+      <span>
+        From {temperature.minimum}'C To {temperature.maximum}'C
+      </span>
     </Wrapper>
   );
 }
