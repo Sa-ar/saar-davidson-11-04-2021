@@ -32,17 +32,43 @@ export const favoritesSlice = createSlice({
         (item) => item.location.id !== action.payload.location.id,
       );
     },
+    updateFavorites: (state, action) => {
+      if (!Array.isArray(action.payload)) {
+        return (state.favorites = updateOneFavorite(
+          action.payload,
+          state.favorites,
+        ));
+      }
+
+      const ids = state.favorites.map((item) => item.location.id);
+      const relevantPayload = action.payload.filter((item) =>
+        ids.includes(item.location.id),
+      );
+
+      for (let item of relevantPayload) {
+        updateOneFavorite(item, state.favorites);
+      }
+    },
   },
 });
+
+function updateOneFavorite(payload, favorites) {
+  return favorites.map((item) => {
+    if (item.location.id === payload.location.id) return payload;
+
+    return item;
+  });
+}
 
 export const {
   changeFavorites,
   addFavorite,
   deleteFavorite,
+  updateFavorites,
 } = favoritesSlice.actions;
 
 export const selectFavorites = (state) => {
-  return state.favorites;
+  return state.favorites.favorites;
 };
 
 export default favoritesSlice.reducer;
