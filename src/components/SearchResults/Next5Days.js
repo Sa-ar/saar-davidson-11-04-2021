@@ -13,8 +13,13 @@ function Next5Days() {
         {next5Days?.map((day) => {
           return (
             <WeatherCard
+              key={day.Date}
               day={getDayOfWeek(day.Date)}
               temperature={formatTemperature(day.Temperature)}
+              weatherText={{
+                byDay: day.Day.IconPhrase,
+                byNight: day.Night.IconPhrase,
+              }}
             />
           );
         })}

@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   status: 'idle',
-  locationId: 215854,
+  location: { id: 215854, name: 'Tel Aviv' },
   currentWeather: {
     temperature: 15.5,
     weatherText: 'Partly cloudy',
@@ -193,7 +193,15 @@ export const weatherSlice = createSlice({
   initialState,
   reducers: {
     changeLocation: (state, action) => {
-      state.locationId = action.payload;
+      state.location = action.payload;
+    },
+    changeNext5Days: (state, action) => {
+      state.next5Days = action.payload.DailyForecasts;
+    },
+    changeCurrentWeather: (state, action) => {
+      state.currentWeather.temperature =
+        action.payload[0].Temperature.Metric.Value;
+      state.currentWeather.weatherText = action.payload[0].WeatherText;
     },
   },
   extraReducers: (builder) => {
@@ -217,11 +225,18 @@ export const weatherSlice = createSlice({
   },
 });
 
-export const { changeLocation } = weatherSlice.actions;
+export const {
+  changeLocation,
+  changeNext5Days,
+  changeCurrentWeather,
+} = weatherSlice.actions;
 
 export const selectCurrentWeather = (state) => {
   return state.weather.currentWeather;
 };
+
 export const selectNext5Days = (state) => state.weather.next5Days;
+
+export const selectCurrentLocation = (state) => state.weather.location;
 
 export default weatherSlice.reducer;

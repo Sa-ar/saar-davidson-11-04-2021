@@ -10,3 +10,15 @@ export const Wrapper = styled.li`
 export const Title = styled.h3`
   margin-top: 0;
 `;
+
+export const WeatherText = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+
+  p {
+    padding: 0;
+    width: 100%;
+  }
+`;
