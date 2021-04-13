@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/saar-davidson-11-04-2021/static/css/main.b305cfad.chunk.css",
-    "main.js": "/saar-davidson-11-04-2021/static/js/main.24765a47.chunk.js",
-    "main.js.map": "/saar-davidson-11-04-2021/static/js/main.24765a47.chunk.js.map",
+    "main.css": "/saar-davidson-11-04-2021/static/css/main.90adb4bd.chunk.css",
+    "main.js": "/saar-davidson-11-04-2021/static/js/main.8a84ec1f.chunk.js",
+    "main.js.map": "/saar-davidson-11-04-2021/static/js/main.8a84ec1f.chunk.js.map",
     "runtime-main.js": "/saar-davidson-11-04-2021/static/js/runtime-main.eb471195.js",
     "runtime-main.js.map": "/saar-davidson-11-04-2021/static/js/runtime-main.eb471195.js.map",
-    "static/js/2.8c0ff9f8.chunk.js": "/saar-davidson-11-04-2021/static/js/2.8c0ff9f8.chunk.js",
-    "static/js/2.8c0ff9f8.chunk.js.map": "/saar-davidson-11-04-2021/static/js/2.8c0ff9f8.chunk.js.map",
+    "static/js/2.5004594d.chunk.js": "/saar-davidson-11-04-2021/static/js/2.5004594d.chunk.js",
+    "static/js/2.5004594d.chunk.js.map": "/saar-davidson-11-04-2021/static/js/2.5004594d.chunk.js.map",
     "index.html": "/saar-davidson-11-04-2021/index.html",
-    "static/css/main.b305cfad.chunk.css.map": "/saar-davidson-11-04-2021/static/css/main.b305cfad.chunk.css.map",
-    "static/js/2.8c0ff9f8.chunk.js.LICENSE.txt": "/saar-davidson-11-04-2021/static/js/2.8c0ff9f8.chunk.js.LICENSE.txt"
+    "static/css/main.90adb4bd.chunk.css.map": "/saar-davidson-11-04-2021/static/css/main.90adb4bd.chunk.css.map",
+    "static/js/2.5004594d.chunk.js.LICENSE.txt": "/saar-davidson-11-04-2021/static/js/2.5004594d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.eb471195.js",
-    "static/js/2.8c0ff9f8.chunk.js",
-    "static/css/main.b305cfad.chunk.css",
-    "static/js/main.24765a47.chunk.js"
+    "static/js/2.5004594d.chunk.js",
+    "static/css/main.90adb4bd.chunk.css",
+    "static/js/main.8a84ec1f.chunk.js"
   ]
 }
