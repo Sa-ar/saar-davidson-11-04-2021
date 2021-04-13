@@ -27,7 +27,6 @@ function Search({ errorHandler }) {
       const result = await fetchSuggestions(searchInput.current.value);
       setSuggestions(result);
     } catch (err) {
-      console.log(err.message);
       handleError(err.message);
     }
   }

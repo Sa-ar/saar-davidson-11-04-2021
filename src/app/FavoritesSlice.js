@@ -12,7 +12,6 @@ export const favoritesSlice = createSlice({
       state.favorites = action.payload;
     },
     addFavorite: (state, action) => {
-      console.log(state);
       if (
         state.favorites.find(
           (item) => item.location.id === action.payload.location.id,
