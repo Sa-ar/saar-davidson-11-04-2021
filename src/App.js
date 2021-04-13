@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Search from './components/Search/Search';
 import Error from './components/Error/Error';
@@ -49,10 +49,10 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route path='./favorites'>
+        <Route path='/#/favorites'>
           <Favorites />
         </Route>
-        <Route exact path='./'>
+        <Route path='/#/'>
           <Search errorHandler={handleError} />
           {error && <Error errors={error} />}
           <SearchResults />
