@@ -25,3 +25,12 @@ a {
 button {
   cursor: pointer;
 }
+
+.selected {
+  background-color: #7b57ae;
+}
+
+nav li a {
+  padding: 1rem;
+  border-radius: 3px;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import {
   HeaderWrapper,
   NavBar,
@@ -16,10 +16,14 @@ function Header() {
         <NavBar>
           <NavList>
             <NavItem>
-              <Link to='/'>Home</Link>
+              <NavLink exact activeClassName='selected' to='./'>
+                Home
+              </NavLink>
             </NavItem>
             <NavItem>
-              <Link to='/favorites'>Favorites</Link>
+              <NavLink activeClassName='selected' to='./favorites'>
+                Favorites
+              </NavLink>
             </NavItem>
           </NavList>
         </NavBar>

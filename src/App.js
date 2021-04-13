@@ -49,10 +49,10 @@ function App() {
     <Router>
       <Header />
       <Switch>
-        <Route path='/favorites'>
+        <Route path='./favorites'>
           <Favorites />
         </Route>
-        <Route exact path='/'>
+        <Route exact path='./'>
           <Search errorHandler={handleError} />
           {error && <Error errors={error} />}
           <SearchResults />
