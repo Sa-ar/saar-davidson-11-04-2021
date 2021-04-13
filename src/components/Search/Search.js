@@ -15,7 +15,7 @@ import {
   changeCurrentWeather,
 } from '../../app/WeatherSlice';
 
-function Search() {
+function Search({ errorHandler }) {
   const [suggestions, setSuggestions] = useState([]);
   const [location, setLocation] = useState(null);
   const searchInput = useRef(null);
@@ -23,14 +23,24 @@ function Search() {
   const dispatch = useDispatch();
 
   async function changeHandler() {
-    const result = await fetchSuggestions(searchInput.current.value);
-    setSuggestions(result);
+    try {
+      const result = await fetchSuggestions(searchInput.current.value);
+      setSuggestions(result);
+    } catch (err) {
+      console.log(err.message);
+      handleError(err.message);
+    }
+  }
+
+  function handleError(message) {
+    setSuggestions([]);
+    errorHandler(message);
   }
 
   async function submitHandler(e) {
     e.preventDefault();
 
-    if (location === null) {
+    if (location == null) {
       setLocation({
         id: suggestions.filter(
           (city) =>
@@ -41,14 +51,19 @@ function Search() {
       });
     }
 
-    if (location.id == null) return setSuggestions([]);
+    if (location == null || location.id == null)
+      return handleError('Wrong search');
 
-    const next5Days = await fetchNext5DaysWeather(location.id);
-    const currentWeather = await fetchCurrentWeather(location.id);
+    try {
+      const next5Days = await fetchNext5DaysWeather(location.id);
+      const currentWeather = await fetchCurrentWeather(location.id);
 
-    dispatch(changeLocation(location));
-    dispatch(changeNext5Days(next5Days));
-    dispatch(changeCurrentWeather(currentWeather));
+      dispatch(changeLocation(location));
+      dispatch(changeNext5Days(next5Days));
+      dispatch(changeCurrentWeather(currentWeather));
+    } catch (e) {
+      handleError(e.message);
+    }
 
     setSuggestions([]);
     setLocation(null);
