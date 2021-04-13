@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { selectWeather } from '../../app/WeatherSlice';
 import { Button } from '../../shared.styles';
@@ -22,6 +22,12 @@ function Header() {
     favorites.find((item) => item.location.id === weather.location.id),
   );
 
+  useEffect(() => {
+    setIsInFavorite(
+      favorites.find((item) => item.location.id === weather.location.id),
+    );
+  }, [weather, favorites]);
+
   return (
     <SearchResultsHeader>
       <SelectedResult>
@@ -32,7 +38,7 @@ function Header() {
             style={{ marginRight: '3rem' }}
           />
           <div>
-            <h3>{weather.location.name}</h3>
+            <h3>{weather.location?.name}</h3>
             <span>{weather.currentWeather?.temperature}'C</span>
           </div>
         </SelectedResultCard>

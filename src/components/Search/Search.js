@@ -7,6 +7,7 @@ import {
   fetchCurrentWeather,
 } from './SearchAPI';
 import { Button } from '../../shared.styles';
+import Suggestions from './Suggestions';
 import { useDispatch } from 'react-redux';
 import {
   changeLocation,
@@ -16,6 +17,7 @@ import {
 
 function Search() {
   const [suggestions, setSuggestions] = useState([]);
+  const [location, setLocation] = useState(null);
   const searchInput = useRef(null);
 
   const dispatch = useDispatch();
@@ -28,24 +30,28 @@ function Search() {
   async function submitHandler(e) {
     e.preventDefault();
 
-    const newLocation = {
-      id: suggestions.filter(
-        (city) =>
-          city.LocalizedName.toLowerCase() === e.target[0].value.toLowerCase(),
-      )[0]?.Key,
-      name: e.target[0].value,
-    };
+    if (location === null) {
+      setLocation({
+        id: suggestions.filter(
+          (city) =>
+            city.LocalizedName.toLowerCase() ===
+            e.target[0].value.toLowerCase(),
+        )[0]?.Key,
+        name: e.target[0].value,
+      });
+    }
 
-    if (newLocation.id == null) return setSuggestions([]);
+    if (location.id == null) return setSuggestions([]);
 
-    const next5Days = await fetchNext5DaysWeather(newLocation.id);
-    const currentWeather = await fetchCurrentWeather(newLocation.id);
+    const next5Days = await fetchNext5DaysWeather(location.id);
+    const currentWeather = await fetchCurrentWeather(location.id);
 
-    dispatch(changeLocation(newLocation));
+    dispatch(changeLocation(location));
     dispatch(changeNext5Days(next5Days));
     dispatch(changeCurrentWeather(currentWeather));
 
     setSuggestions([]);
+    setLocation(null);
   }
 
   return (
@@ -58,13 +64,12 @@ function Search() {
           onChange={_.debounce(changeHandler, 1000)}
         />
         <Button>Check weather</Button>
-        {!!suggestions && (
-          <ul>
-            {suggestions.map((suggestion) => (
-              <li>{suggestion.LocalizedName}</li>
-            ))}
-          </ul>
-        )}
+        <Suggestions
+          suggestions={suggestions}
+          input={searchInput}
+          setLocation={setLocation}
+          emptySuggestions={() => setSuggestions([])}
+        />
       </form>
     </SearchWrapper>
   );

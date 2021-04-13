@@ -1,7 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  weather: {},
+  weather: {
+    location: {},
+    next5Days: [],
+    currentWeather: {},
+  },
 };
 
 export const weatherSlice = createSlice({
@@ -15,9 +19,11 @@ export const weatherSlice = createSlice({
       state.weather.next5Days = action.payload.DailyForecasts;
     },
     changeCurrentWeather: (state, action) => {
-      state.weather.currentWeather.temperature =
-        action.payload[0].Temperature.Metric.Value;
-      state.weather.currentWeather.weatherText = action.payload[0].WeatherText;
+      if (state.weather.currentWeather)
+        state.weather.currentWeather = {
+          temperature: action.payload[0].Temperature.Metric.Value,
+          weatherText: action.payload[0].WeatherText,
+        };
     },
   },
 });
