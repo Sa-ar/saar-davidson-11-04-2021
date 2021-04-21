@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from './components/Header/Header';
 import Search from './components/Search/Search';
 import Error from './components/Error/Error';
@@ -26,7 +26,7 @@ function App() {
 
   function handleError(err) {
     setError([...error, err.message]);
-    console.log(err, error);
+
     setTimeout(() => {
       setError([]);
     }, 10000);
