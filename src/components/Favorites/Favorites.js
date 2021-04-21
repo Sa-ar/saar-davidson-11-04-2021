@@ -14,9 +14,10 @@ function Favorites() {
         {favorites.length ? 'Favorites' : 'There are no favorite cities yet!'}
       </PageTitle>
       <CardsList>
-        {favorites.map((favorite) => {
+        {favorites.map((favorite, i) => {
           return (
             <Card
+              key={i}
               place={favorite.location.name}
               temperature={favorite.currentWeather.temperature}
               weatherText={favorite.currentWeather.weatherText}
