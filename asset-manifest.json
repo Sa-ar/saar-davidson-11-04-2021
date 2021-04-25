@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/saar-davidson-11-04-2021/static/css/main.90adb4bd.chunk.css",
-    "main.js": "/saar-davidson-11-04-2021/static/js/main.9091c5ee.chunk.js",
-    "main.js.map": "/saar-davidson-11-04-2021/static/js/main.9091c5ee.chunk.js.map",
+    "main.js": "/saar-davidson-11-04-2021/static/js/main.7c5929c8.chunk.js",
+    "main.js.map": "/saar-davidson-11-04-2021/static/js/main.7c5929c8.chunk.js.map",
     "runtime-main.js": "/saar-davidson-11-04-2021/static/js/runtime-main.eb471195.js",
     "runtime-main.js.map": "/saar-davidson-11-04-2021/static/js/runtime-main.eb471195.js.map",
     "static/js/2.e4c7e825.chunk.js": "/saar-davidson-11-04-2021/static/js/2.e4c7e825.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.eb471195.js",
     "static/js/2.e4c7e825.chunk.js",
     "static/css/main.90adb4bd.chunk.css",
-    "static/js/main.9091c5ee.chunk.js"
+    "static/js/main.7c5929c8.chunk.js"
   ]
 }
