@@ -16,12 +16,33 @@ import {
   changeCurrentWeather,
 } from './app/WeatherSlice';
 
+async function getWeather(handleError) {
+  try {
+    const next5Days = await fetchNext5DaysWeather(215854);
+    const currentWeather = await fetchCurrentWeather(215854);
+
+    return [currentWeather, next5Days];
+  } catch (err) {
+    handleError(err);
+  }
+}
+
 function App() {
   const [error, setError] = useState([]);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    getWeather();
+    async function updateWeather() {
+      const [currentWeather, next5Days] = await getWeather(handleError);
+
+      if (currentWeather == null || next5Days == null) return;
+
+      dispatch(changeLocation({ id: 215854, name: 'Tel Aviv' }));
+      dispatch(changeNext5Days(next5Days));
+      dispatch(changeCurrentWeather(currentWeather));
+    }
+
+    updateWeather();
   }, []);
 
   function handleError(err) {
@@ -30,19 +51,6 @@ function App() {
     setTimeout(() => {
       setError([]);
     }, 10000);
-  }
-
-  async function getWeather() {
-    try {
-      const next5Days = await fetchNext5DaysWeather(215854);
-      const currentWeather = await fetchCurrentWeather(215854);
-
-      dispatch(changeLocation({ id: 215854, name: 'Tel Aviv' }));
-      dispatch(changeNext5Days(next5Days));
-      dispatch(changeCurrentWeather(currentWeather));
-    } catch (err) {
-      handleError(err);
-    }
   }
 
   return (
