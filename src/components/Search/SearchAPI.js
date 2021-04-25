@@ -1,6 +1,6 @@
 export function fetchCurrentWeather(locationId) {
   return fetch(
-    `//dataservice.accuweather.com/currentconditions/v1/${locationId}?apikey=${process.env.REACT_APP_API_KEY}`,
+    `https://dataservice.accuweather.com/currentconditions/v1/${locationId}?apikey=${process.env.REACT_APP_API_KEY}`,
   )
     .then((result) => {
       if (result.ok) {
@@ -16,7 +16,7 @@ export function fetchCurrentWeather(locationId) {
 
 export function fetchNext5DaysWeather(locationId) {
   return fetch(
-    `//dataservice.accuweather.com/forecasts/v1/daily/5day/${locationId}?apikey=${process.env.REACT_APP_API_KEY}`,
+    `https://dataservice.accuweather.com/forecasts/v1/daily/5day/${locationId}?apikey=${process.env.REACT_APP_API_KEY}`,
   )
     .then((result) => {
       if (result.ok) {
@@ -31,7 +31,7 @@ export function fetchNext5DaysWeather(locationId) {
 }
 
 export function fetchSuggestions(text) {
-  return fetch(`//dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_API_KEY}&q=${text}
+  return fetch(`https://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=${process.env.REACT_APP_API_KEY}&q=${text}
 `)
     .then((result) => {
       if (result.ok) {
