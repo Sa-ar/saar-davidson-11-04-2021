@@ -43,6 +43,7 @@ function App() {
     }
 
     updateWeather();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   function handleError(err) {
